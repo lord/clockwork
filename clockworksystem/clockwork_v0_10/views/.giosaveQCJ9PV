@@ -1,0 +1,422 @@
+<?php
+if (!isset($header)) {$header = "";}
+if (!isset($title)) {$title = "";}
+if (!isset($page_hideconttable)) {$page_hideconttable = 0;}
+if (!isset($navbar_dark)) {$navbar_dark = 1;}
+if (!isset($navbar_tab)) {$navbar_tab = 0;}
+if (!isset($signupbar_show)) {$signupbar_show = 0;}
+if (!isset($title_show)) {$title_show = 1;}
+?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+
+<title><?php if ($title != "Welcome") {echo $title." | Clockwork";}else{echo "Clockwork - Stats, Highscores, and more, for Game Maker";} ?></title>
+
+<link rel="icon" type="image/gif" href="http://external.madewithclockwork.com/favicon.gif">
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8">
+<meta name="resource-type" content="document">
+<meta name="description" content="Free online stats and highscores for Game Maker 7 and 8">
+<meta name="keywords" content="game maker, gamemaker, gm, game maker 7, game maker 8, free, online, highscores, statistics, stats, error reporting, errors, bug tracking, clockwork, clockworks, highscore, statistic, stat">
+<meta name="distribution" content="global">
+
+<style type="text/css">
+
+/****************** @font-faces *****************************/
+@font-face {
+	font-family: 'BebasRegular';
+	src: url('http://media.madewithclockwork.com/fonts/BEBAS___-webfont.eot');
+	src: local('☺'), url('http://media.madewithclockwork.com/fonts/BEBAS___-webfont.woff') format('woff'), url('http://media.madewithclockwork.com/fonts/BEBAS___-webfont.ttf') format('truetype'), url('http://media.madewithclockwork.com/fonts/BEBAS___-webfont.svg#webfontOJIfwzl6') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+/************************* reset **************************/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+
+/* remember to define focus styles! */
+:focus {
+	outline: 0;
+}
+
+/* remember to highlight inserts somehow! */
+ins {
+	text-decoration: none;
+}
+del {
+	text-decoration: line-through;
+}
+
+/* tables still need 'cellspacing="0"' in the markup */
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/************************* general *************************/
+body {
+	font-family:"Helvetica","Verdana","Arial",sans-serif;
+	font-size:small;
+	background-color:#FFF;
+}
+a {
+	text-decoration:none;
+	color:#F00;
+	outline:none;
+}
+a:link {
+	text-decoration:none;
+}
+a:visited {
+	text-decoration:none;
+}
+a:hover {
+	text-decoration:underline;
+}
+a:active {
+	color:#900;
+}
+table {
+	border-collapse:collapse;
+}
+* {
+	padding:0px;
+	margin:0px;
+}
+p {
+	display:block;
+}
+h4.red {
+	color:#F00;
+	font-size:medium;
+}
+h1,h2,h3,h4,h5,h6 {
+	font-family:"Helvetica","Verdana","Arial",sans-serif;
+}
+ol {
+	padding-left:40px;
+}
+select {
+	background-color:#F33;
+	color:#000;
+	border-width:0px;
+}
+/************************* custom general *************************/
+span.tinytext {
+	font-size:x-small;
+}
+.hspaced {
+	padding:0px 10px 0px 10px;
+}
+img.top {
+	vertical-align:top;
+}
+.red {
+	color:#F00;
+}
+input.normal {
+	height:auto;
+	padding:5px;
+	margin:3px;
+}
+img.inline {
+	vertical-align:text-bottom;
+	margin:5px;
+}
+.small {
+	font-size:x-small;
+	color:#333;
+}
+.right {
+	text-align:right;
+}
+.colorwhite {
+	color:#FFF;
+}
+blockquote.code {
+	padding:10px;
+	background-color:#EEE;
+	font-family:monospace;
+	white-space:pre-wrap;
+}
+.doublespace {
+	line-height:1.5em;
+}
+/************************* headers *************************/
+p.massive {
+	color:#000;
+	display:block;
+	width:100%;
+	line-height:1em;
+	font-size:50px;
+	text-align:left;
+	margin:15px 0px 15px 0px;
+	text-shadow:#CCC 0px 2px 0px;
+}
+
+h1 {
+	color:#000;
+	display:block;
+	width:100%;
+	line-height:1em;
+	font-size:large;
+	text-align:left;
+	border-bottom:1px #CCC solid;
+	padding:15px 0px 4px 0px;
+	margin:0px 0px 10px 0px;
+	text-shadow:#C6C6C6 0px 1px 0px;
+	font-weight:normal;
+}
+
+h2 {
+	color:#000;
+	display:block;
+	width:100%;
+	line-height:1em;
+	font-size:medium;
+	text-align:left;
+	border-bottom:1px #DDD solid;
+	padding:10px 0px 4px 5px;
+	margin:0px 0px 5px 0px;
+	text-shadow:#C6C6C6 0px 1px 0px;
+}
+
+h3 {
+	color:#333;
+	display:block;
+	width:100%;
+	line-height:1em;
+	font-size:small;
+	text-align:left;
+	border-bottom:1px #EEE solid;
+	padding:10px 0px 4px 10px;
+	margin:0px 0px 5px 0px;
+	text-shadow:#C6C6C6 0px 1px 0px;
+}
+
+/**** h4 and p.formhint are under "form"  ******/
+
+
+
+/************************* =navbar and =colorbar *************************/
+#navbarcontainer{
+	width:100%;
+}
+#navbar {
+	margin:0 auto 0 auto;
+	width:900px;
+	height:40px;
+	font-size:medium;
+	line-height:1em;
+	position:relative;
+}
+#navbar ul {
+	height:40px;
+	background-image:url('http://external.madewithclockwork.com/0.1/img/logoheader.png');
+	background-position:left center;
+	background-repeat:no-repeat;
+	width:100%;
+	padding-left:186px;
+}
+#navbar li {
+	list-style-type:none;
+	float:left;
+}
+#navbar a {
+	display:block;
+	min-width:80px;
+	height:30px;
+	text-align:center;
+	font-weight:bold;
+	text-transform: uppercase;
+	font-size:small;
+	position:relative;
+	
+	padding:10px 8px 0px 10px
+}
+#navbar a:hover {
+	text-decoration:none;
+}
+<?php
+	if ($navbar_dark == 1) {
+?>
+	#navbarcontainer {
+		background-color:#666;
+	}
+	#navbar>ul>li>a {
+		color:#FFF;
+		text-shadow:#000 0px 1px 0px;
+	}
+	#navbar>ul>li>a:hover {
+		background-color:#999;
+	}
+	#navbar>ul {
+		background-image:url('http://media.madewithclockwork.com/logos/clockworkwhite.png');
+	}
+	#colorbar {
+		display:none;
+	}
+	
+	<?php
+	/*highlight the currently active tab*/
+	if ($navbar_tab !== 0)
+	{
+	?>
+		#navbar li:nth-child(<?php echo $navbar_tab; ?>) a
+		{
+			color:#666;
+			background-color:#FFF;
+			text-shadow:none;
+		}
+		#navbar li:nth-child(<?php echo $navbar_tab; ?>) a:hover
+		{
+			color:#F00;
+			background-color:#FFF;
+		}
+	<?php
+	}
+	?>
+
+<?php
+	} else {
+?>
+	#navbarcontainer {
+		background-color:#FFF;
+	}
+	#navbar>ul>li>a {
+		color:#F00;
+	}
+	#navbar>ul>li>a:hover {
+		color:#600;
+	}
+	#navbar>ul {
+		background-image:url('http://media.madewithclockwork.com/logos/clockworkred.png');
+	}
+	#colorbar {
+		width:100%;
+		height:5px;
+		background-color:#F00;
+	}
+<?php
+}
+?>
+
+/************************* =signupbar *************************/
+#signupbar {
+	background-color:#666;
+	width:100%;
+	height:40px;
+	display: table;
+	border-collapse:separate;
+	
+	font-size:medium;
+	color:#FFF;
+}
+	#signupbar>div {
+		display:table-cell;
+		width:100%
+		height:40px;
+		vertical-align:middle;
+	}
+		#signupbar>div>div {
+			width:900px;
+			margin:0 auto 0 auto;
+			
+		}
+		#signupbar a {
+			background-color:#F00;
+			padding:5px;
+			color:#FFF;
+		}
+		#signupbar a:hover {
+			background-color:#C00;
+			text-decoration:none;
+		}
+/************************* =content *************************/
+
+div.content {
+	width:900px;
+	margin:0 auto 0 auto;
+	background-color:#FFF;
+	color:#333;
+}
+
+/************************* =footer *************************/
+
+#footer {
+	margin:0px auto 20px auto;
+	width:900px;
+	border-top:1px solid #CCC;
+	color:#CCC;
+	padding:10px 0px 0px 0px;
+	text-align:center;
+	
+	line-height:1.5em;
+}
+
+#footer a:link,#footer a:visited,#footer a:active {
+	color:#CCC;
+}
+
+#footer a:hover {
+	color:#F00;
+	text-decoration:none;
+}
+
+/************************* =back-button *************************/
+
+a.back-button {
+	font-family:"Arial","Helvetica",sans-serif;
+	display:block;
+	color:#F33;
+	font-size:small;
+	width:200px;
+	border-bottom:#C00 1px dotted;
+	margin:0px 0px 0px 0px;
+	padding:5px;
+	background-color:#FFF6F6;
+	font-weight:bold;
+
+	position:relative;
+	bottom:10px;
+}
+
+a.back-button:hover {
+	border-bottom:#F00 1px dotted;
+	background-color:#FFEEEE;
+	text-decoration:none;
+}
+
+/************************* =form class *************************/
+
+ul

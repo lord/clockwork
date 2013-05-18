@@ -1,0 +1,1 @@
+<p class='doublespace'>We collect some anonymous data regarding your visit to our website, via Google Analytics, so that we can see how many people are using Clockwork, and so that we can improve our website.</p>

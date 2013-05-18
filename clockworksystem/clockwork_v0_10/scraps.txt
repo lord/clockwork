@@ -1,0 +1,13 @@
+$this->Userloginmodel->userid()
+
+$this->Userloginmodel->requirelogin(1)
+
+"http://".$_SERVER['HTTP_HOST']
+
+current_url()
+
+uri_string()
+
+header('Location: http://'.$_SERVER['HTTP_HOST'].$this->uri->uri_string());
+
+site_url("games/".$id."/settings")
