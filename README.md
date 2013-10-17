@@ -9,12 +9,9 @@ This software uses CodeIgniter, which is documented here:
 
 http://codeigniter.com/user_guide/
 
-
-Want to help out?
-==========
-
-This software is kind of a mess, and I'd appreciate anybody 
-who'd like to help out. Just fork, edit, and send a pull request. If you have any questions about the code, just open an issue.
+About
+========
+I built Clockwork freshmen year of high school, so it's rather...poorly written. It isn't really updated any more, since I've moved on to other things. This source code is here for posterity's sake.
 
 License
 ==========
